@@ -1,0 +1,25 @@
+#main-title {
+  text-align: center;
+  font-size: 70px;
+}
+
+p {
+  text-align: center;
+  font-size: x-large;
+}
+
+.game-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game-card p {
+  display: flex;
+  justify-content: space-around;
+  max-width: 20%;
+}
+
+.game-card a {
+  font-size: x-large;
+}
