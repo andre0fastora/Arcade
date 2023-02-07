@@ -3,6 +3,8 @@ let startButton = document.getElementById("start-button");
 let easyButton = document.getElementById(`easy-button`);
 let medButton = document.getElementById(`med-button`);
 let hardButton = document.getElementById(`hard-button`);
+let scoreP = document.getElementById(`scoreP`);
+let hScoreP = document.getElementById(`hScoreP`);
 
 //input booleans
 let movingUp = false;
@@ -20,9 +22,9 @@ const cellArray = [...cellList];
 let gameBoard = [];
 let counter = 0;
 //set up 2D array for gameboard
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 16; i++) {
   gameBoard.push([]);
-  for (let j = 0; j < 44; j++) {
+  for (let j = 0; j < 38; j++) {
     gameBoard[i][j] = cellArray[counter];
     counter++;
   }
@@ -30,8 +32,8 @@ for (let i = 0; i < 20; i++) {
 
 //initial head pos
 
-let headPosY = 10;
-let headPosX = 22;
+let headPosY = 5;
+let headPosX = 5;
 let currentSnakeArr = [gameBoard[headPosY][headPosX]];
 
 let snakeLength = 3;
@@ -44,16 +46,19 @@ startButton.addEventListener(`click`, (e) => {
   for (let i = 0; i < gameBoard.length - 1; i++) {
     for (let j = 0; j < gameBoard[i].length; j++) {
       gameBoard[i][j].style.backgroundColor = `white`;
+      console.log(`I: ${i} J: ${j}`);
     }
   }
-  headPosY = 10;
-  headPosX = 22;
+  headPosY = 5;
+  headPosX = 5;
   currentSnakeArr = [gameBoard[headPosY][headPosX]];
   movingRight = true;
   gameBoard[headPosY][headPosX].style.backgroundColor = `black`;
   spawnApple();
   startButton.disabled = true;
   gameOverBool = false;
+  score = 0;
+  scoreP.innerText = `Score: 0`;
 });
 
 easyButton.addEventListener(`click`, updateSpeedEasy);
@@ -162,6 +167,7 @@ function gameOver() {
   gameOverBool = true;
   if (score > highScore) {
     highScore = score;
+    hScoreP.innerText = `HighScore: ${highScore}`;
   }
   console.log("GAME OVER");
   startButton.disabled = false;
@@ -178,7 +184,7 @@ function cleanUpTail() {
 
 function spawnApple() {
   let randomCell =
-    gameBoard[Math.floor(Math.random() * 18)][Math.floor(Math.random() * 40)];
+    gameBoard[Math.floor(Math.random() * 10)][Math.floor(Math.random() * 30)];
 
   if (randomCell.style.backgroundColor != `black`) {
     randomCell.style.backgroundColor = `red`;
@@ -191,6 +197,7 @@ function eatApple() {
   spawnApple();
   snakeLength += 1;
   score += 1;
+  scoreP.innerText = `Score: ${score}`;
 }
 
 function updateSpeedEasy() {
