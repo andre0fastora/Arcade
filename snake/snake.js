@@ -14,7 +14,7 @@ let movingRight = false;
 
 let gameOverBool = true;
 
-let speed = 1000;
+let speed = 500;
 
 //grab cells for gameboard
 const cellList = document.getElementsByClassName(`cell`);
@@ -43,10 +43,9 @@ let interval = setInterval(moveSnake, speed);
 
 //button event listeners
 startButton.addEventListener(`click`, (e) => {
-  for (let i = 0; i < gameBoard.length - 1; i++) {
+  for (let i = 0; i < gameBoard.length; i++) {
     for (let j = 0; j < gameBoard[i].length; j++) {
       gameBoard[i][j].style.backgroundColor = `white`;
-      console.log(`I: ${i} J: ${j}`);
     }
   }
   headPosY = 5;
@@ -62,6 +61,8 @@ startButton.addEventListener(`click`, (e) => {
 });
 
 easyButton.addEventListener(`click`, updateSpeedEasy);
+medButton.addEventListener(`click`, updateSpeedMed);
+hardButton.addEventListener(`click`, updateSpeedHard);
 
 //user input
 //using keycode which is depreciated but couldnt get it to work using other key event listeners
@@ -91,8 +92,6 @@ document.body.addEventListener(`keydown`, (e) => {
     movingLeft = false;
     movingRight = true;
   }
-
-  console.log(movingUp, movingRight, movingDown, movingLeft);
 });
 //moves snake and checks for collisions
 function moveSnake() {
@@ -115,13 +114,11 @@ function moveSnake() {
     } else if (movingUp === true) {
       if (
         headPosY <= 0 ||
-        gameBoard[headPosY - 1][headPosX + 1].style.backgroundColor === `black`
+        gameBoard[headPosY - 1][headPosX].style.backgroundColor === `black`
       ) {
         gameOver();
       } else {
-        if (
-          gameBoard[headPosY - 1][headPosX + 1].style.backgroundColor === `red`
-        ) {
+        if (gameBoard[headPosY - 1][headPosX].style.backgroundColor === `red`) {
           eatApple();
         }
         headPosY -= 1;
@@ -130,8 +127,9 @@ function moveSnake() {
         currentSnakeArr.push(gameBoard[headPosY][headPosX]);
       }
     } else if (movingDown === true) {
+      console.log(movingDown);
       if (
-        gameBoard[headPosY + 1][headPosX] === undefined ||
+        headPosY >= 15 ||
         gameBoard[headPosY + 1][headPosX].style.backgroundColor === `black`
       ) {
         gameOver();
@@ -188,6 +186,7 @@ function spawnApple() {
 
   if (randomCell.style.backgroundColor != `black`) {
     randomCell.style.backgroundColor = `red`;
+    console.log("Apple Spawned!");
   } else {
     spawnApple();
   }
@@ -202,10 +201,16 @@ function eatApple() {
 
 function updateSpeedEasy() {
   speed = 1000;
+  clearInterval(interval);
+  interval = setInterval(moveSnake, speed);
 }
 function updateSpeedMed() {
   speed = 500;
+  clearInterval(interval);
+  interval = setInterval(moveSnake, speed);
 }
 function updateSpeedHard() {
-  speed = 250;
+  speed = 100;
+  clearInterval(interval);
+  interval = setInterval(moveSnake, speed);
 }
