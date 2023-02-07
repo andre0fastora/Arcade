@@ -42,7 +42,13 @@ p {
 
 .cell {
   margin: 0;
+  padding: 0;
   height: 25px;
   width: 25px;
   border: 1px solid black;
+}
+
+#start-button {
+  margin-left: 50%;
+  margin-top: 10%;
 }
