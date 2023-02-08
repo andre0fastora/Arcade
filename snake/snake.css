@@ -1,15 +1,21 @@
+body {
+  background-color: rgb(36, 139, 228);
+}
+
 .nav-bar {
   display: flex;
   position: fixed;
   top: 0;
   width: 100%;
   justify-content: end;
-  background-color: aqua;
+  background-color: rgb(51, 61, 69);
 }
 
 .nav-bar a {
   padding: 10px;
   margin-right: 5px;
+  color: aliceblue;
+  text-decoration: none;
 }
 
 h1 {
@@ -26,24 +32,34 @@ p {
   justify-content: space-around;
 }
 
+.difficulty-card {
+  border: 2px solid black;
+  width: 100px;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 2px 2px 2px;
+  background-color: aliceblue;
+}
+
 #game-board {
   margin-left: 25%;
-  margin-top: 5%;
-  border: 5px solid blue;
-  /* max-height: 500px;
-  max-width: 800px;
-  min-height: 500px;
-  min-width: 800px; */
-  /* height: 500px; */
+  margin-top: 2%;
+  border: 5px solid black;
+
   width: 1032px;
 
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: flex-start;
-  align-items: flex-start; */
-  /* flex-grow: 0;
-  flex-shrink: 0; */
-  /* flex-basis: auto; */
+}
+
+#score-card {
+  border: 2px solid black;
+  width: 300px;
+  text-align: center;
+  margin-left: 42%;
+  margin-top: 20px;
+  box-shadow: 2px 2px 2px;
+  background-color: aliceblue;
 }
 
 .cell {
@@ -54,10 +70,13 @@ p {
   border: 1px solid black;
   flex-grow: 0;
   flex-shrink: 0;
-  /* background-color: blue; */
 }
 
 #start-button {
-  margin-left: 50%;
-  margin-top: 10%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.selected {
+  color: red;
 }

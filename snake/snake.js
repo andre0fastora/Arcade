@@ -5,6 +5,9 @@ let medButton = document.getElementById(`med-button`);
 let hardButton = document.getElementById(`hard-button`);
 let scoreP = document.getElementById(`scoreP`);
 let hScoreP = document.getElementById(`hScoreP`);
+let easyP = document.getElementById(`easyP`);
+let medP = document.getElementById(`medP`);
+let hardP = document.getElementById(`hardP`);
 
 //input booleans
 let movingUp = false;
@@ -46,6 +49,7 @@ startButton.addEventListener(`click`, (e) => {
   for (let i = 0; i < gameBoard.length; i++) {
     for (let j = 0; j < gameBoard[i].length; j++) {
       gameBoard[i][j].style.backgroundColor = `white`;
+      gameBoard[i][j].style.borderColor = `black`;
     }
   }
   headPosY = 5;
@@ -55,6 +59,9 @@ startButton.addEventListener(`click`, (e) => {
   gameBoard[headPosY][headPosX].style.backgroundColor = `black`;
   spawnApple();
   startButton.disabled = true;
+  easyButton.disabled = true;
+  medButton.disabled = true;
+  hardButton.disabled = true;
   gameOverBool = false;
   score = 0;
   scoreP.innerText = `Score: 0`;
@@ -108,6 +115,7 @@ function moveSnake() {
         }
         headPosX += 1;
         gameBoard[headPosY][headPosX].style.backgroundColor = `black`;
+        gameBoard[headPosY][headPosX].style.borderColor = `white`;
         cleanUpTail();
         currentSnakeArr.push(gameBoard[headPosY][headPosX]);
       }
@@ -123,6 +131,7 @@ function moveSnake() {
         }
         headPosY -= 1;
         gameBoard[headPosY][headPosX].style.backgroundColor = `black`;
+        gameBoard[headPosY][headPosX].style.borderColor = `white`;
         cleanUpTail();
         currentSnakeArr.push(gameBoard[headPosY][headPosX]);
       }
@@ -139,6 +148,7 @@ function moveSnake() {
         }
         headPosY += 1;
         gameBoard[headPosY][headPosX].style.backgroundColor = `black`;
+        gameBoard[headPosY][headPosX].style.borderColor = `white`;
         cleanUpTail();
         currentSnakeArr.push(gameBoard[headPosY][headPosX]);
       }
@@ -154,6 +164,7 @@ function moveSnake() {
         }
         headPosX -= 1;
         gameBoard[headPosY][headPosX].style.backgroundColor = `black`;
+        gameBoard[headPosY][headPosX].style.borderColor = `white`;
         cleanUpTail();
         currentSnakeArr.push(gameBoard[headPosY][headPosX]);
       }
@@ -169,12 +180,16 @@ function gameOver() {
   }
   console.log("GAME OVER");
   startButton.disabled = false;
+  easyButton.disabled = false;
+  medButton.disabled = false;
+  hardButton.disabled = false;
   snakeLength = 3;
 }
 
 function cleanUpTail() {
   if (currentSnakeArr.length === snakeLength) {
     currentSnakeArr[0].style.backgroundColor = `white`;
+    currentSnakeArr[0].style.borderColor = `black`;
 
     currentSnakeArr.shift();
   }
@@ -201,16 +216,25 @@ function eatApple() {
 
 function updateSpeedEasy() {
   speed = 1000;
+  easyP.classList.add(`selected`);
+  medP.classList.remove(`selected`);
+  hardP.classList.remove(`selected`);
   clearInterval(interval);
   interval = setInterval(moveSnake, speed);
 }
 function updateSpeedMed() {
   speed = 500;
+  easyP.classList.remove(`selected`);
+  medP.classList.add(`selected`);
+  hardP.classList.remove(`selected`);
   clearInterval(interval);
   interval = setInterval(moveSnake, speed);
 }
 function updateSpeedHard() {
   speed = 100;
+  easyP.classList.remove(`selected`);
+  medP.classList.remove(`selected`);
+  hardP.classList.add(`selected`);
   clearInterval(interval);
   interval = setInterval(moveSnake, speed);
 }

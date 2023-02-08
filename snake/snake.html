@@ -11,7 +11,7 @@
 <body>
     <nav class="nav-bar">
         <a href="/ticTacToe/ticTacToe.html"> Tic Tac Toe</a>
-        <a href="/connectFour/connectFour.html">Connect 4</a>
+    
         <a href="/snake/snake.html">Snake</a>
         <a href="/../index.html">Back to Home</a>
     </nav>
@@ -20,26 +20,30 @@
 
     <div class="difficulty">
         <div class="difficulty-card">
-            <h2>Easy</h2>
+            <h2 id="easyP">Easy</h2>
             <button id="easy-button">Select</button>
         </div>
         <div class="difficulty-card">
-            <h2>Medium</h2>
+            <h2 class="selected" id="medP">Medium</h2>
             <button id="med-button">Select</button>
             
         </div>
 
         <div class="difficulty-card">
-            <h2>Hard</h2>
+            <h2 id="hardP">Hard</h2>
             <button id="hard-button">Select</button>
         </div>
 
     </div>
-    <div id="start-button-div">
-        <button id="start-button">Start Game</button>
+    <div id="score-card">
+        <p id="scoreP">Score: 0</p>
+        <p id="hScoreP"> HighScore: 0</p>
+        <div id="start-button-div">
+            <button id="start-button">Start Game</button>
+        </div>
     </div>
-    <p id="scoreP">Score: 0</p>
-    <p id="hScoreP"> HighScore: 0</p>
+    
+   
     <div id="game-board">
         <div class="cell"></div>
         <div class="cell"></div>

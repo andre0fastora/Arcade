@@ -18,6 +18,11 @@
   justify-content: space-around;
 }
 
+.player-select-card {
+  border: 2px solid black;
+  padding: 10px;
+}
+
 h1 {
   margin-top: 50px;
   text-align: center;
@@ -30,4 +35,22 @@ p {
 #start-button {
   margin-left: 50%;
   margin-top: 5%;
+}
+
+.selected {
+  color: red;
+}
+
+.row {
+  display: flex;
+  border: 2px solid black;
+
+  width: 500px;
+  margin-left: 35%;
+}
+
+.cell {
+  border: 2px solid black;
+  height: 167px;
+  width: 167px;
 }

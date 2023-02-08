@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="/ticTacToe/ticTacToe.js" defer></script>
     <link rel="stylesheet" href="/ticTacToe/ticTacToe.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,7 @@
 <body>
     <nav class="nav-bar">
         <a href="/ticTacToe/ticTacToe.html"> Tic Tac Toe</a>
-        <a href="/connectFour/connectFour.html">Connect 4</a>
+       
         <a href="/snake/snake.html">Snake</a>
         <a href="/../index.html">Back to Home</a>
     </nav>
@@ -21,17 +22,47 @@
 
     <div class="player-select-card-container">
         <div class="player-select-card">
-            <h2>Vs Player</h2>
-            <button>Select</button>
+            <h2 id="vsPlayerH2">Vs Player</h2>
+            <button id="select2pGame">Select</button>
+            <p>Player 1 Name</p>
+            <input id="player1Name" type="text">
+            <p>Player 2 Name</p>
+            <input id="player2Name" type="text">
         </div>
 
         <div class="player-select-card">
-            <h2>Vs CPU</h2>
-            <button>Select</button>
+            <h2 id="vsCpuH2">Vs CPU</h2>
+            
+            <button id="select1pGame">Select</button>
+            <p>Player Name</p>
+            <input id="singlePlayerName" type="text">
         </div>
 
 
     </div>
+    
     <button id="start-button">Start Game</button>
+    <div class="flex-div">
+        <p id="player1P">Player One: </p>
+        <p id="player2P">Player Two: </p>
+    </div>
+
+    <div id="gameBoardDisplay">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class ="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class ="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class ="cell"></div>
+        </div>
+    </div>
 </body>
 </html>
