@@ -8,6 +8,9 @@ let player1NameForm = document.getElementById(`player1Name`);
 let player2NameForm = document.getElementById(`player2Name`);
 let vsPlayerH2 = document.getElementById(`vsPlayerH2`);
 let vsCpuH2 = document.getElementById(`vsCpuH2`);
+let startButton = document.getElementById(`start-button`);
+
+let gameBoardDisplay = document.getElementById(`gameBoardDisplay`);
 
 let player1Name = ``;
 let player2Name = ``;
@@ -17,18 +20,21 @@ let cellArray = [...cellList];
 
 let gameBoard = [];
 let counter = 0;
-for (let i = 0; i <= 3; i++) {
+
+for (let i = 0; i < 3; i++) {
   gameBoard.push([]);
-  for (let j = 0; i <= 3; i++) {
-    gameBoard[i][j] = cellArray[counter];
+  for (let j = 0; j < 3; j++) {
+    gameBoard[i].push(cellArray[counter]);
     counter++;
   }
 }
-
 console.log(gameBoard);
 
 //toggle for cpu game or 2 player game
 let singlePlayerBool = true;
+
+let gameRunning = false;
+let currentTurn = `green`;
 
 //event listeners
 select2pGameButton.addEventListener(`click`, (e) => {
@@ -52,4 +58,18 @@ select1pGameButton.addEventListener(`click`, (e) => {
   singlePlayerBool = true;
   vsPlayerH2.classList.remove(`selected`);
   vsCpuH2.classList.add(`selected`);
+});
+
+startButton.addEventListener(`click`, (e) => {
+  startButton.disable = true;
+  gameRunning = true;
+});
+
+gameBoardDisplay.addEventListener(`click`, (e) => {
+  e.target.style.backgroundColor = currentTurn;
+  if (currentTurn === `red`) {
+    currentTurn = `green`;
+  } else {
+    currentTurn = `red`;
+  }
 });
