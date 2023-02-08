@@ -44,7 +44,7 @@ select2pGameButton.addEventListener(`click`, (e) => {
   player2P.innerText = `Player Two: ${player2Name}`;
   player1NameForm.value = ``;
   player2NameForm.value = ``;
-  singlePlayerBool = true;
+  singlePlayerBool = false;
   vsPlayerH2.classList.add(`selected`);
   vsCpuH2.classList.remove(`selected`);
 });
@@ -61,15 +61,72 @@ select1pGameButton.addEventListener(`click`, (e) => {
 });
 
 startButton.addEventListener(`click`, (e) => {
-  startButton.disable = true;
+  startButton.disabled = true;
   gameRunning = true;
+  let ran = Math.floor(Math.random() * 2);
+  if (ran === 1) {
+    currentTurn = `green`;
+    player1P.style.color = `green`;
+    player2P.style.color = `black`;
+  } else {
+    currentTurn = `red`;
+    player1P.style.color = `black`;
+    player2P.style.color = `red`;
+    if (singlePlayerBool) {
+      cpuTurn();
+    }
+  }
 });
 
 gameBoardDisplay.addEventListener(`click`, (e) => {
-  e.target.style.backgroundColor = currentTurn;
-  if (currentTurn === `red`) {
-    currentTurn = `green`;
-  } else {
-    currentTurn = `red`;
+  if (gameRunning === true && e.target.matches(`.cell`)) {
+    if (
+      e.target.style.backgroundColor === `` ||
+      e.target.style.backgroundColor === `white`
+    ) {
+      e.target.style.backgroundColor = currentTurn;
+      if (currentTurn === `red`) {
+        currentTurn = `green`;
+        player1P.style.color = `green`;
+        player2P.style.color = `black`;
+      } else {
+        currentTurn = `red`;
+        player1P.style.color = `black`;
+        player2P.style.color = `red`;
+      }
+
+      checkForWin();
+
+      if (singlePlayerBool) {
+        cpuTurn();
+      }
+    }
   }
 });
+
+function cpuTurn() {
+  let ran1 = Math.floor(Math.random() * 3);
+
+  let ran2 = Math.floor(Math.random() * 3);
+
+  if (
+    gameBoard[ran1][ran2].style.backgroundColor === `white` ||
+    gameBoard[ran1][ran2].style.backgroundColor === ``
+  ) {
+    gameBoard[ran1][ran2].style.backgroundColor = currentTurn;
+    checkForWin();
+    if (currentTurn === `red`) {
+      currentTurn = `green`;
+      player1P.style.color = `green`;
+      player2P.style.color = `black`;
+    } else {
+      currentTurn = `red`;
+      player1P.style.color = `black`;
+      player2P.style.color = `red`;
+    }
+  } else {
+    cpuTurn();
+  }
+}
+
+function checkForWin() {}
