@@ -35,6 +35,7 @@ let singlePlayerBool = true;
 
 let gameRunning = false;
 let currentTurn = `green`;
+let cellsRemaining = 9;
 
 //event listeners
 select2pGameButton.addEventListener(`click`, (e) => {
@@ -63,6 +64,17 @@ select1pGameButton.addEventListener(`click`, (e) => {
 startButton.addEventListener(`click`, (e) => {
   startButton.disabled = true;
   gameRunning = true;
+  cellsRemaining = 9;
+
+  for (let i = 0; i < gameBoard.length; i++) {
+    for (let j = 0; j < gameBoard[i].length; j++) {
+      gameBoard[i][j].style.backgroundColor = `white`;
+    }
+  }
+
+  player1P.innerText = `Player One: ${player1Name}`;
+  player2P.innerText = `Player Two: ${player2Name}`;
+
   let ran = Math.floor(Math.random() * 2);
   if (ran === 1) {
     currentTurn = `green`;
@@ -129,4 +141,160 @@ function cpuTurn() {
   }
 }
 
-function checkForWin() {}
+function checkForWin() {
+  //check all green winning possibilities
+  if (
+    gameBoard[0][0].style.backgroundColor === `green` &&
+    gameBoard[0][1].style.backgroundColor === `green` &&
+    gameBoard[0][2].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  if (
+    gameBoard[1][0].style.backgroundColor === `green` &&
+    gameBoard[1][1].style.backgroundColor === `green` &&
+    gameBoard[1][2].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  if (
+    gameBoard[2][0].style.backgroundColor === `green` &&
+    gameBoard[2][1].style.backgroundColor === `green` &&
+    gameBoard[2][2].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  if (
+    gameBoard[0][0].style.backgroundColor === `green` &&
+    gameBoard[1][0].style.backgroundColor === `green` &&
+    gameBoard[2][0].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  if (
+    gameBoard[0][1].style.backgroundColor === `green` &&
+    gameBoard[1][1].style.backgroundColor === `green` &&
+    gameBoard[2][1].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  if (
+    gameBoard[0][2].style.backgroundColor === `green` &&
+    gameBoard[1][2].style.backgroundColor === `green` &&
+    gameBoard[2][2].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  if (
+    gameBoard[0][0].style.backgroundColor === `green` &&
+    gameBoard[1][1].style.backgroundColor === `green` &&
+    gameBoard[2][2].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  if (
+    gameBoard[0][2].style.backgroundColor === `green` &&
+    gameBoard[1][1].style.backgroundColor === `green` &&
+    gameBoard[2][0].style.backgroundColor === `green`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player1Name} Wins!`;
+  }
+  //check all red winning possibilities
+
+  if (
+    gameBoard[0][0].style.backgroundColor === `red` &&
+    gameBoard[0][1].style.backgroundColor === `red` &&
+    gameBoard[0][2].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player2P.innerText = `${player2Name} Wins!`;
+  }
+  if (
+    gameBoard[1][0].style.backgroundColor === `red` &&
+    gameBoard[1][1].style.backgroundColor === `red` &&
+    gameBoard[1][2].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player2P.innerText = `${player2Name} Wins!`;
+  }
+  if (
+    gameBoard[2][0].style.backgroundColor === `red` &&
+    gameBoard[2][1].style.backgroundColor === `red` &&
+    gameBoard[2][2].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player2P.innerText = `${player2Name} Wins!`;
+  }
+  if (
+    gameBoard[0][0].style.backgroundColor === `red` &&
+    gameBoard[1][0].style.backgroundColor === `red` &&
+    gameBoard[2][0].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player2P.innerText = `${player2Name} Wins!`;
+  }
+  if (
+    gameBoard[0][1].style.backgroundColor === `red` &&
+    gameBoard[1][1].style.backgroundColor === `red` &&
+    gameBoard[2][1].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player2P.innerText = `${player2Name} Wins!`;
+  }
+  if (
+    gameBoard[0][2].style.backgroundColor === `red` &&
+    gameBoard[1][2].style.backgroundColor === `red` &&
+    gameBoard[2][2].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player2P.innerText = `${player2Name} Wins!`;
+  }
+  if (
+    gameBoard[0][0].style.backgroundColor === `red` &&
+    gameBoard[1][1].style.backgroundColor === `red` &&
+    gameBoard[2][2].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `${player2Name} Wins!`;
+  }
+  if (
+    gameBoard[0][2].style.backgroundColor === `red` &&
+    gameBoard[1][1].style.backgroundColor === `red` &&
+    gameBoard[2][0].style.backgroundColor === `red`
+  ) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player2P.innerText = `${player2Name} Wins!`;
+  }
+
+  cellsRemaining--;
+  if (cellsRemaining === 0 && gameRunning === true) {
+    gameRunning = false;
+    startButton.disabled = false;
+    player1P.innerText = `DRAW`;
+    player2P.innerText = `DRAW`;
+  }
+}
