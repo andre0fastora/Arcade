@@ -72,7 +72,6 @@ medButton.addEventListener(`click`, updateSpeedMed);
 hardButton.addEventListener(`click`, updateSpeedHard);
 
 //user input
-//using keycode which is depreciated but couldnt get it to work using other key event listeners
 document.body.addEventListener(`keydown`, (e) => {
   //down
   if (e.key === `ArrowDown` && movingUp === false) {
@@ -178,7 +177,7 @@ function gameOver() {
     highScore = score;
     hScoreP.innerText = `HighScore: ${highScore}`;
   }
-  console.log("GAME OVER");
+
   startButton.disabled = false;
   easyButton.disabled = false;
   medButton.disabled = false;
