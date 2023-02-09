@@ -22,6 +22,7 @@ p {
   justify-content: space-around;
   align-items: center;
   margin-top: 5%;
+  margin-left: 5%;
 }
 
 .game-card p {
@@ -29,7 +30,6 @@ p {
   justify-content: space-around;
   max-width: 20%;
 }
-
 
 .game-card a {
   font-size: x-large;
