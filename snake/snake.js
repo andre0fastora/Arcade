@@ -75,25 +75,25 @@ hardButton.addEventListener(`click`, updateSpeedHard);
 //using keycode which is depreciated but couldnt get it to work using other key event listeners
 document.body.addEventListener(`keydown`, (e) => {
   //down
-  if (e.keyCode === 40 && movingUp === false) {
+  if (e.key === `ArrowDown` && movingUp === false) {
     movingDown = true;
     movingUp = false;
     movingLeft = false;
     movingRight = false;
     //up
-  } else if (e.keyCode === 38 && movingDown === false) {
+  } else if (e.key === `ArrowUp` && movingDown === false) {
     movingDown = false;
     movingUp = true;
     movingLeft = false;
     movingRight = false;
     //left
-  } else if (e.keyCode === 37 && movingRight === false) {
+  } else if (e.key === `ArrowLeft` && movingRight === false) {
     movingDown = false;
     movingUp = false;
     movingLeft = true;
     movingRight = false;
     //right
-  } else if (e.keyCode === 39 && movingLeft === false) {
+  } else if (e.key === `ArrowRight` && movingLeft === false) {
     movingDown = false;
     movingUp = false;
     movingLeft = false;
